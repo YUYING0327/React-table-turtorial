@@ -1,10 +1,11 @@
 import './App.css';
-import { BasicTable } from './components/BasicTable';
+import 'regenerator-runtime';
+import { ColumnOrder } from './components/ColumnOrder';
 
 function App() {
   return (
-    <div className='App'>
-      <BasicTable />
+    <div>
+      <ColumnOrder />
     </div>
   );
 }
