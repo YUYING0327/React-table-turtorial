@@ -1,11 +1,11 @@
 import './App.css';
 import 'regenerator-runtime';
-import { PaginationTable } from './components/PaginationTable';
+import { RowSelection } from './components/RowSelection';
 
 function App() {
   return (
-    <div className='App'>
-      <PaginationTable />
+    <div>
+      <RowSelection />
     </div>
   );
 }
