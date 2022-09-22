@@ -1,11 +1,11 @@
 import './App.css';
 import 'regenerator-runtime';
-import { RowSelection } from './components/RowSelection';
+import { ColumnOrder } from './components/ColumnOrder';
 
 function App() {
   return (
     <div>
-      <RowSelection />
+      <ColumnOrder />
     </div>
   );
 }

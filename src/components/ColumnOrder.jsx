@@ -1,11 +1,10 @@
-import { useTable, useRowSelect } from 'react-table';
+import { useTable, useColumnOrder } from 'react-table';
 import MOCK_DATA from './MOCK_DATA.json';
 import { COLUMNS } from './columns';
 import { useMemo } from 'react';
 import './table.css';
-import { CheckBox } from './CheckBox';
 
-export const RowSelection = () => {
+export const ColumnOrder = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
@@ -16,35 +15,29 @@ export const RowSelection = () => {
     footerGroups,
     rows,
     prepareRow,
-    selectedFlatRows,
+    setColumnOrder,
   } = useTable(
     {
       columns,
       data,
     },
-    useRowSelect,
-    (hooks) => {
-      hooks.visibleColumns.push((columns) => {
-        return [
-          {
-            id: 'selection',
-            Header: ({ getToggleAllRowsSelectedProps }) => (
-              <CheckBox {...getToggleAllRowsSelectedProps()} />
-            ),
-            Cell: ({ row }) => (
-              <CheckBox {...row.getToggleRowSelectedProps()} />
-            ),
-          },
-          ...columns,
-        ];
-      });
-    }
+    useColumnOrder
   );
 
-  const firstPageRow = rows.slice(0, 10);
+  const changeOrder = () => {
+    setColumnOrder([
+      'id',
+      'first_name',
+      'last_name',
+      'phone',
+      'country',
+      'date_of_birth',
+    ]);
+  };
 
   return (
     <>
+      <button onClick={changeOrder}>Change column order</button>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -56,7 +49,7 @@ export const RowSelection = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {firstPageRow.map((row) => {
+          {rows.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -79,17 +72,6 @@ export const RowSelection = () => {
           ))}
         </tfoot>
       </table>
-      <pre>
-        <code>
-          {JSON.stringify(
-            {
-              selectedFlatRows: selectedFlatRows.map((row) => row.original),
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre>
     </>
   );
 };
