@@ -1,4 +1,5 @@
 import './App.css';
+import 'regenerator-runtime';
 import { FilteringTable } from './components/FilteringTable';
 
 function App() {
