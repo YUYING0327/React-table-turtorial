@@ -1,10 +1,11 @@
 import './App.css';
-import { BasicTable } from './components/BasicTable';
+import 'regenerator-runtime';
+import { StickyTable } from './components/StickyTable';
 
 function App() {
   return (
-    <div className='App'>
-      <BasicTable />
+    <div>
+      <StickyTable />
     </div>
   );
 }
