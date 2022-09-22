@@ -1,11 +1,11 @@
 import './App.css';
 import 'regenerator-runtime';
-import { ColumnHiding } from './components/ColumnHiding';
+import { StickyTable } from './components/StickyTable';
 
 function App() {
   return (
     <div>
-      <ColumnHiding />
+      <StickyTable />
     </div>
   );
 }
